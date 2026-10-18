@@ -3,7 +3,7 @@
 # Overleaf Community Edition (overleaf/overleaf)
 # ---------------------------------------------
 
-ARG OVERLEAF_BASE_TAG=sharelatex/sharelatex-base:latest
+ARG OVERLEAF_BASE_TAG=jogit/sharelatex-base:2026.10.18
 FROM $OVERLEAF_BASE_TAG
 
 WORKDIR /overleaf
