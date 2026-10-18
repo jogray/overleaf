@@ -10,12 +10,22 @@ export OVERLEAF_TAG ?= jogit/sharelatex:$(BRANCH_NAME_TAG_SAFE)-$(MONOREPO_REVIS
 
 all: build-base build-community
 
+show: 
+	@echo "MONOREPO_ROOT: $(MONOREPO_ROOT)"
+	@echo "MONOREPO_REVISION: $(MONOREPO_REVISION)"
+	@echo "BRANCH_NAME: $(BRANCH_NAME)"
+	@echo "BRANCH_NAME_TAG_SAFE: $(BRANCH_NAME_TAG_SAFE)"
+	@echo "OVERLEAF_BASE_BRANCH: $(OVERLEAF_BASE_BRANCH)"
+	@echo "OVERLEAF_BASE_TAG: $(OVERLEAF_BASE_TAG)"
+	@echo "OVERLEAF_BRANCH: $(OVERLEAF_BRANCH)"
+	@echo "OVERLEAF_TAG: $(OVERLEAF_TAG)"
+
 build-base:
 	cp server-ce/.dockerignore $(MONOREPO_ROOT)
 	docker build \
 	  --build-arg BUILDKIT_INLINE_CACHE=1 \
 	  --progress=plain \
-	  --file Dockerfile-base \
+	  --file server-ce/Dockerfile.base \
 	  --tag $(OVERLEAF_BASE_TAG) \
 	  --tag $(OVERLEAF_BASE_BRANCH) \
 	  $(MONOREPO_ROOT)
@@ -29,7 +39,7 @@ build-community:
 	  --progress=plain \
 	  --build-arg OVERLEAF_BASE_TAG \
 	  --label "com.overleaf.ce.revision=$(MONOREPO_REVISION)" \
-	  --file Dockerfile \
+	  --file server-ce/Dockerfile \
 	  --tag $(OVERLEAF_TAG) \
 	  --tag $(OVERLEAF_BRANCH) \
 	  $(MONOREPO_ROOT)

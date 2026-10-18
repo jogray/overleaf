@@ -1,4 +1,3 @@
-# syntax=docker/dockerfile:1-labs
 # ---------------------------------------------
 # Overleaf Community Edition (overleaf/overleaf)
 # ---------------------------------------------
