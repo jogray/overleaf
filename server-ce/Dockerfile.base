@@ -22,6 +22,13 @@ RUN --mount=type=cache,target=/var/cache/apt,sharing=locked \
 &&  rm -f /etc/apt/apt.conf.d/docker-clean && echo 'Binary::apt::APT::Keep-Downloaded-Packages "true";' > /etc/apt/apt.conf.d/keep-cache \
 &&  apt-get update \
 &&  apt-get install -y \
+      libyaml-tiny-perl \
+      libfile-homedir-perl \
+      liblog-log4perl-perl \
+      bat \
+      ncdu \
+      tree \
+      fonts-noto-cjk \
       unattended-upgrades \
       build-essential wget net-tools unzip time poppler-utils optipng strace nginx git python3 python-is-python3 zlib1g-dev libpcre3-dev gettext-base libwww-perl ca-certificates curl gnupg \
       qpdf \
